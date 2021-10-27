@@ -18,7 +18,7 @@ alert(randomArr);
 
 //timer 30 secs
 //variable starting from 30s -> setInterval
-let i = 1;
+let i = 30;
 
 let userArr = [];
 
