@@ -23,21 +23,36 @@ function genRandomArr (){
         //increment
         i++
     }
-    console.log(randomNumArr);
-
-    return alert(randomNumArr);
+    
+    //show array numbers in alert()
+    return randomNumArr;
 }
-//show array numbers in alert()
+//timer 30 secs
+//variable starting from 30s -> setInterval
+let i = 30;
+const timer = setInterval(() => {
+    console.log(i);
+    
+    if (i === 0){
+        clearInterval(timer);
+    }
+    
+    i--
+}, 1000);
+
+
 //alert must be visibile for 30sec then it shall be overwrited by prompt.
 //show 30sec counter? OPTIONAL
-
+// console.log(genRandomArr());
+// alert(genRandomArr());
 
 
 
 
 
 /* ASK & CHECK USER INPUT */
-//ask user for the same 5 numbers
+//ask user for the same 5 numbers after 30 secs
+// setTimeout(function(){prompt('Riscrivi i numeri che hai visto, separati da una virgola.');}, 3000)
 //store user input in array
 
 //filter array for matching numbers. Exclude wrong guesses.
