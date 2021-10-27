@@ -29,6 +29,9 @@ function genRandomArr (){
 }
 
 // alert(genRandomArr());
+const randomArr = genRandomArr();
+console.log(randomArr);
+alert(randomArr);
 
 //timer 30 secs
 //variable starting from 30s -> setInterval
@@ -39,16 +42,29 @@ let userArr = [];
 const timer = setInterval(() => {
     console.log(i);
     if (i === 0){
+        //stop timer
         clearInterval(timer);
 
         //time's up. Get 5 inputs from user
         for (let i = 0; i < genRandomArr().length; i++) {
-            const userNum = parseInt(prompt('Scrivi il primo numero che ricordi di quelli che hai visto.'));
+            const userNum = parseInt(prompt('Scrivi un numero che ricordi di quelli che hai visto.'));
+            
+            //store user input in array if matching with randomArray
+            if (randomArr.includes(userNum)) {
+                userArr.push(userNum);
+            }
 
-            userArr.push(userNum);   
+            //THIS DOESN'T WORK
+            //filter array for matching numbers. Exclude wrong guesses. 
+            /* const matching = userArr.filter(() => {
+                return randomArr.includes(userArr[i]);
+            }) */
         }
+        
         console.log(userArr);
 
+        alert(`Hai ricordato correttamente ${userArr.length} numeri!`);
+        alert(`Questi sono i numeri indovinati: ${userArr}`)
 
     }
     
@@ -58,8 +74,7 @@ const timer = setInterval(() => {
 
 //alert must be visibile for 30sec then it shall be overwrited by prompt.
 //show 30sec counter? OPTIONAL
-// console.log(genRandomArr());
-// alert(genRandomArr());
+
 
 
 
