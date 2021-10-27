@@ -13,7 +13,6 @@ const resultEl = document.querySelector('.result');
 /* RANDOM NUMBERS MUST BE STORED TO LATER CHECK USER MEMORY SKILLS  */
 // alert(genRandomArr());
 const randomArr = genRandomArr();
-console.log(randomArr);
 alert(randomArr); 
 
 //timer 30 secs
@@ -25,72 +24,49 @@ let userArr = [];
 const timer = setInterval(() => {
     timerEl.innerHTML = i;
     if (i === 0){
-        //show 30sec counter
-        timerEl.style.display = 'none';
         //stop timer
         clearInterval(timer);
         
+        //show 30sec counter
+        timerEl.style.display = 'none';
 
-        /* ASK & CHECK USER INPUT */
         //time's up. Get 5 inputs from user
         for (let i = 0; i < randomArr.length; i++) {
             //ask user for nums
             const userNum = parseInt(prompt('Scrivi un numero che ricordi di quelli che hai visto.')); 
             
-            //store user input in array if matching with randomArray
+            //store user input in array only if matching with randomArray
             if (randomArr.includes(userNum)) {
                 userArr.push(userNum);
             }
-
-
-            //THIS DOESN'T WORK
-            //filter array for matching numbers. Exclude wrong guesses. 
-            /* userArr.push(userNum);
-            const matching = userArr.filter(() => { 
-                return randomArr.includes(userNum);
-            })
-             */
         }
         
-        console.log(userArr);
-
         //show resulting array.length and values.
         resultEl.innerHTML = `Hai ricordato correttamente ${userArr.length} numeri! <br>
         Questi sono i numeri indovinati: ${userArr}`
     }
-    
+    //decrement
     i--
 }, 1000);
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ////// FUNCTIONS /////
+/**
+ * Generate random numbers from minimum number to maximum number range. Min & Max numbers are included.
+ * @param {Number} min minimum value
+ * @param {Number} max maximum value
+ * @returns Random number
+ */
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
   }
 
-//generate 5 random numbers
-
 /**
- * Generate 5 random numbers and push them in a Array.
+ * Generate 5 random numbers _(no duplicates)_ and push them in a Array.
  * @returns {Array} Returns array containing 5 random number.
  */
 function genRandomArr (){
