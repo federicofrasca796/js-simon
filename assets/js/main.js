@@ -27,14 +27,29 @@ function genRandomArr (){
     //show array numbers in alert()
     return randomNumArr;
 }
+
+// alert(genRandomArr());
+
 //timer 30 secs
 //variable starting from 30s -> setInterval
-let i = 30;
+let i = 2;
+
+let userArr = [];
+
 const timer = setInterval(() => {
     console.log(i);
-    
     if (i === 0){
         clearInterval(timer);
+
+        //time's up. Get 5 inputs from user
+        for (let i = 0; i < genRandomArr().length; i++) {
+            const userNum = parseInt(prompt('Scrivi il primo numero che ricordi di quelli che hai visto.'));
+
+            userArr.push(userNum);   
+        }
+        console.log(userArr);
+
+
     }
     
     i--
