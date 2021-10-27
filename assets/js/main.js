@@ -6,36 +6,18 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 
 
 
+//DOM elements
+
+
 /* RANDOM NUMBERS MUST BE STORED TO LATER CHECK USER MEMORY SKILLS  */
-//generate 5 random numbers
-
-/**
- * Generate 5 random numbers and push them in a Array.
- * @returns {Array} Returns array containing 5 random number.
- */
-function genRandomArr (){
-    let i = 0;
-    const randomNumArr = [];
-    while (i < 5){
-        //push random numbers in array
-        randomNumArr.push(getRandomIntInclusive(1, 20));
-    
-        //increment
-        i++
-    }
-    
-    //show array numbers in alert()
-    return randomNumArr;
-}
-
 // alert(genRandomArr());
 const randomArr = genRandomArr();
 console.log(randomArr);
-alert(randomArr);
+alert(randomArr); 
 
 //timer 30 secs
 //variable starting from 30s -> setInterval
-let i = 2;
+let i = 1;
 
 let userArr = [];
 
@@ -46,25 +28,28 @@ const timer = setInterval(() => {
         clearInterval(timer);
 
         //time's up. Get 5 inputs from user
-        for (let i = 0; i < genRandomArr().length; i++) {
-            const userNum = parseInt(prompt('Scrivi un numero che ricordi di quelli che hai visto.'));
+        for (let i = 0; i < randomArr.length; i++) {
+            const userNum = parseInt(prompt('Scrivi un numero che ricordi di quelli che hai visto.')); 
             
             //store user input in array if matching with randomArray
             if (randomArr.includes(userNum)) {
                 userArr.push(userNum);
             }
 
+
             //THIS DOESN'T WORK
             //filter array for matching numbers. Exclude wrong guesses. 
-            /* const matching = userArr.filter(() => {
-                return randomArr.includes(userArr[i]);
-            }) */
+            /* userArr.push(userNum);
+            const matching = userArr.filter(() => { 
+                return randomArr.includes(userNum);
+            })
+             */
         }
         
         console.log(userArr);
 
         alert(`Hai ricordato correttamente ${userArr.length} numeri!`);
-        alert(`Questi sono i numeri indovinati: ${userArr}`)
+        alert(`Questi sono i numeri indovinati: ${userArr}`);
 
     }
     
@@ -103,3 +88,29 @@ function getRandomIntInclusive(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
   }
+
+//generate 5 random numbers
+
+/**
+ * Generate 5 random numbers and push them in a Array.
+ * @returns {Array} Returns array containing 5 random number.
+ */
+function genRandomArr (){
+    let i = 0;
+    const randomNumArr = [];
+    while (i < 5){
+        // generate random numbers
+        let randomNum = getRandomIntInclusive(1, 20);
+        //push random numbers in array (only if not duplicate)
+        if (!randomNumArr.includes(randomNum)){
+            randomNumArr.push(randomNum);
+
+            //increment
+            i++
+        } 
+    
+    }
+    
+    //show array numbers in alert()
+    return randomNumArr;
+}
